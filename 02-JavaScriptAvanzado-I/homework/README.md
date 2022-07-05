@@ -6,7 +6,7 @@
 Determiná que será impreso en la consola, sin ejecutar el código.
 
 > Investiga cuál es la diferencia entre declarar una variable con `var` y directamente asignarle un valor.
-
+Cuando le colocamos var creamos  un contexto de ejecucion por el contrario cuando no le colocamos var dejamos la variable como global
 ```javascript
 x = 1;
 var a = 5;
@@ -84,13 +84,13 @@ console.log(pm);
 7 / 0
 {}[0]
 parseInt("09")
-5 && 2
+5 && 2 // preguntar
 2 && 5
 5 || 0
 0 || 5
 [3]+[3]-[10]
 3>2>1
-[] == ![]
+[] == ![] // preguntar 
 ```
 
 > Si te quedó alguna duda repasá con [este artículo](http://javascript.info/tutorial/object-conversion).
@@ -157,6 +157,7 @@ console.log(test());
 ### Event loop
 
 Considerando el siguiente código, ¿Cuál sería el orden en el que se muestra por consola? ¿Por qué?
+1,4,3,2 en el llamado se ejecutan el los que estan fuera del set time luego el 3 ya que no tiene tiempo de espera y luego el 2 ya que debe esperar 1 segundo
 
 ```javascript
 function printing() {

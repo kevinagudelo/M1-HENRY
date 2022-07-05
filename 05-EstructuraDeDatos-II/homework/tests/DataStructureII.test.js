@@ -117,7 +117,7 @@ describe('Una linked list', function() {
 
 });
 
-describe('HashTable', function() {
+xdescribe('HashTable', function() {
   var hashTable;
 
   beforeEach(function() {

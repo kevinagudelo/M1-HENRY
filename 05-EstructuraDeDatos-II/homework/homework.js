@@ -11,9 +11,70 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
   En caso de que la búsqueda no arroje resultados, search debe retornar null.
 */
 
-function LinkedList() {}
+function LinkedList() {
+  this.head = null;
+  this.length = 0
+}
 
-function Node(value) {}
+function Node(value) {
+  this.value = value,
+	this.next = null;
+}
+
+LinkedList.prototype.add = function (data) {
+  var newNodo = new Node(data)
+  if (this.head == null){
+    this.head = newNodo
+  }else {
+    var current = this.head
+    while (current.next){
+      current = current.next
+    }
+    current.next = newNodo
+  }
+  this.length++
+}
+
+LinkedList.prototype.remove = function(){
+  if (this.length == 0){
+    return null
+  }
+  if (this.length == 1){
+    var resp = this.head.value
+    this.head = null;
+    this.length = 0
+    return resp
+  }
+  var current = this.head
+  while (current.next !== null){
+    current = current.next
+  }
+  var ultimo = current
+  var current2 = this.head
+  while (current2.next.next !== null){
+    current2 = current2.next
+  }
+  current2.next = null
+  this.length--
+  return ultimo.value
+}
+LinkedList.prototype.search = function(value){
+  if (this.length === 0){
+    return null
+  }
+  let current = this.head
+  while (current){
+    if (current.value == value) return current.value
+
+    else if(typeof value === 'function'){
+       if (value(current.value)){
+        return current.value
+       }
+    }
+    current = current.next
+  }
+  return null
+}
 
 /*
 Implementar la clase HashTable.
@@ -30,7 +91,17 @@ La clase debe tener los siguientes métodos:
 Ejemplo: supongamos que quiero guardar {instructora: 'Ani'} en la tabla. Primero puedo chequear, con hasKey, si ya hay algo en la tabla con el nombre 'instructora'; luego, invocando set('instructora', 'Ani'), se almacenará el par clave-valor en un bucket específico (determinado al hashear la clave)
 */
 
-function HashTable() {}
+function HashTable() {
+  this.buckets = []
+  this.numBuckets = 35
+}
+HashTable.prototype.hast = function(key){
+let sum = 0
+for (let i= 0 ; i < key.length ;i ++) {
+  sum += keycharCodeAt(i);
+}
+return sum% this.numBuckets;
+}
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
